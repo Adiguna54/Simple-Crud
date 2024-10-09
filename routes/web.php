@@ -17,6 +17,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/demo', function () {
-    return view('crud.index');
-});
+Route::get('/pegawai','PegawaiController@index');
