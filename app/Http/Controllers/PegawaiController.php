@@ -12,7 +12,7 @@ class PegawaiController extends Controller
     public function index()
     {
         // mengambil data pegawai untuk ditampilkan di view
-        $pegawai = DB::table('pegawais')->get();
+        $pegawai = pegawai::get();
         // menampilkan data table pegawai di view inde.blade.php
         return view('index', ['pegawai' => $pegawai]);
     }
