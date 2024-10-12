@@ -7,6 +7,9 @@
 </head>
 
 <body>
+    {{-- sintaks ini buat ngecek error pada setiap function yang berkaitan --}}
+    {{-- {{ $errors->any()?dd($errors->all()):'' }}; --}}
+
     <div class="py-4 mx-8">
 
         <h3 class="text-4xl font-bold text-center">Data Pegawai</h3>
@@ -21,13 +24,13 @@
             <table>
                 <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">
                     <span>Nama</span>
-                    <input type="text" name="nama" required="required" class="p-2 border border-black">
+                    <input type="text" name="pname" required="required" class="p-2 border border-black">
                     <span>Jabatan</span>
-                    <input type="text" name="jabatan" required="required" class="p-2 border border-black">
+                    <input type="text" name="pjabatan" required="required" class="p-2 border border-black">
                     <span>Umur</span>
-                    <input type="number" name="umur" required="required" class="p-2 border border-black">
+                    <input type="number" name="pumur" required="required" class="p-2 border border-black">
                     <span>Alamat</span>
-                    <textarea name="alamat" required="required" class="p-2 border border-black"></textarea>
+                    <textarea name="palamat" required="required" class="p-2 border border-black"></textarea>
                 </div>
                 <button type="submit" value="Simpan Data" class="p-4 mt-8 border-2 border-black">Simpan Data</button>
             </table>
@@ -37,3 +40,7 @@
 </body>
 
 </html>
+
+<script>
+    
+</script>

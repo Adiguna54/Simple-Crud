@@ -21,9 +21,10 @@ class PegawaiRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd($this);
         return [
-            'pname' => 'required|max:20|unique:pegawais,pegawai_nama',
-            'pjabatan' => 'required|max:10',
+            'pname' => 'required|string|max:20|unique:pegawais,pegawai_nama',
+            'pjabatan' => 'required|string|max:10',
             'pumur' => 'required|integer',
             'palamat' => 'required',
         ];

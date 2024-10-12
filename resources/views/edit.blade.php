@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    {{-- {{ $errors->any()?dd($errors->all()):'' }}; --}}
+    <x-common.success-failed-message />
     <div class="py-4 mx-8">
 
         <h3 class="text-4xl font-bold text-center">Edit Pegawai</h3>
@@ -17,24 +19,24 @@
         <br>
         <br>
 
-        @foreach ($pegawai as $p)
-            <form action="/pegawai/update" method="post">
+        @foreach ($pegawai as $pegawais)
+            <form action="/pegawai/update/" method="post">
                 {{-- csrf_field fungsinya adalah sebagai fitur keamanan untuk pencegahan penginputan data dari luar aplikasi atau sistem --}}
                 {{ csrf_field() }}
                 <table>
                     <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">
-                        <input type="hidden" name="id" value="{{ $p->id }}">
+                        <input type="hidden" name="id" value="{{ $pegawais->id }}">
                         <span>Nama</span>
-                        <input type="text" required="required" name="nama" value="{{ $p->pegawai_nama }}"
+                        <input type="text" required="required" name="pname" value="{{ $pegawais->pegawai_nama }}"
                             class="p-2 border border-black">
                         <span>Jabatan</span>
-                        <input type="text" required="required" name="jabatan" value="{{ $p->pegawai_jabatan }}"
+                        <input type="text" required="required" name="pjabatan" value="{{ $pegawais->pegawai_jabatan }}"
                             class="p-2 border border-black">
                         <span>Umur</span>
-                        <input type="number" required="required" name="umur" value="{{ $p->pegawai_umur }}"
+                        <input type="number" required="required" name="pumur" value="{{ $pegawais->pegawai_umur }}"
                             class="p-2 border border-black">
                         <span>Alamat</span>
-                        <textarea required="required" name="alamat" class="p-2 border border-black">{{ $p->pegawai_alamat }}</textarea>
+                        <textarea required="required" name="palamat" class="p-2 border border-black">{{ $pegawais->pegawai_alamat }}</textarea>
                     </div>
                     <button type="submit" value="Simpan Data" class="p-4 mt-8 border-2 border-black">Simpan
                         Data</button>
