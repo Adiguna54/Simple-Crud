@@ -33,6 +33,7 @@ class PegawaiController extends Controller
         // menambahkan data baru pada table pegawai
         // dd($request);
         try {
+            // throw new Exception("Error Processing Request", 1);
             DB::beginTransaction();
             $pegawai = new Pegawai();
             $pegawai->pegawai_nama = $request->pname;
@@ -44,7 +45,7 @@ class PegawaiController extends Controller
             return redirect('/pegawai')->with('success', 'Success Add New Data');
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e->getMessage());
+            // dd($e->getMessage());
             return redirect('/pegawai')->with('failed', 'Failed to Add New Data');
         }
         // DB::table('pegawais')->insert([
@@ -73,6 +74,7 @@ class PegawaiController extends Controller
     {
         // mengubah data pada table pegawai berdasarkan id nya untuk di update datanya
         try {
+        
             DB::beginTransaction();
             $pegawai = Pegawai::findOrFail($request->id);
             $pegawai->pegawai_nama = $request->pname;

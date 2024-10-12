@@ -24,13 +24,25 @@
             <table>
                 <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">
                     <span>Nama</span>
-                    <input type="text" name="pname" required="required" class="p-2 border border-black">
+                    <input type="text" name="pname" class="p-2 border border-black" value="{{ old('pname') }}">
+                    @error('pname')
+                        {{ $message }}
+                    @enderror
                     <span>Jabatan</span>
-                    <input type="text" name="pjabatan" required="required" class="p-2 border border-black">
+                    <input type="text" name="pjabatan" class="p-2 border border-black" value="{{ old('pjabatan')}}">
+                    @error('pjabatan')
+                        {{ $message }}
+                    @enderror
                     <span>Umur</span>
-                    <input type="number" name="pumur" required="required" class="p-2 border border-black">
+                    <input type="number" name="pumur" class="p-2 border border-black" value="{{ old('pumur')}}">
+                    @error('pumur')
+                        {{ $message }}
+                    @enderror
                     <span>Alamat</span>
-                    <textarea name="palamat" required="required" class="p-2 border border-black"></textarea>
+                    <textarea name="palamat" class="p-2 border border-black">{{ old('palamat')}}</textarea>
+                    @error('palamat')
+                        {{ $message }}
+                    @enderror
                 </div>
                 <button type="submit" value="Simpan Data" class="p-4 mt-8 border-2 border-black">Simpan Data</button>
             </table>
@@ -41,6 +53,4 @@
 
 </html>
 
-<script>
-    
-</script>
+<script></script>

@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    
+
     <div class="py-4 mx-8">
         <div class="pb-8">
             <p class="text-4xl font-bold text-center">Data Pegawai</p>
@@ -44,6 +44,18 @@
                 </table>
             @endforeach
         </div>
+
+        @session('success')
+            <div class="p-4 bg-green-100">
+                {{ $value }}
+            </div>
+        @endsession
+
+        @session('failed')
+        <div class="p-4 bg-red-100">
+            {{ $value }}
+        </div>
+        @endsession
     </div>
 </body>
 
