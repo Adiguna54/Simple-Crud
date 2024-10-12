@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PegawaiRequest;
 use App\Models\pegawai;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 class PegawaiController extends Controller
 {
+
     public function index()
     {
         // mengambil data pegawai untuk ditampilkan di view
@@ -24,18 +27,32 @@ class PegawaiController extends Controller
     }
 
     // metode penambahan
-    public function store(Request $request)
+    public function store(PegawaiRequest $request)
     {
         // menambahkan data baru pada table pegawai
-        DB::table('pegawais')->insert([
-            'pegawai_nama' => $request->nama,
-            'pegawai_jabatan' => $request->jabatan,
-            'pegawai_umur' => $request->umur,
-            'pegawai_alamat' => $request->alamat
-        ]);
+        try {
+            DB::beginTransaction();
+            $pegawai = new Pegawai();
+            $pegawai->pegawai_nama = $request->pnama;
+            $pegawai->pegawai_jabatan = $request->pjabatan;
+            $pegawai->pegawai_umur = $request->pumur;
+            $pegawai->pegawai_alamat = $request->palamat;
+            $pegawai->save();
+            DB::commit();
+            return redirect('/pegawai')->with('success', 'Success Add New Data');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect('/pegawai')->with('failed', 'Failed to Add New Data');
+        }
+        // DB::table('pegawais')->insert([
+        //     'pegawai_nama' => $request->nama,
+        //     'pegawai_jabatan' => $request->jabatan,
+        //     'pegawai_umur' => $request->umur,
+        //     'pegawai_alamat' => $request->alamat
+        // ]);
 
         // kembali ke halaman pegawai setelah melakukan penambahan data
-        return redirect('/pegawai');
+        // return redirect('/pegawai');
     }
 
     public function edit($id)

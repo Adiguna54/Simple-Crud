@@ -25,7 +25,7 @@
                     <span>Jabatan</span>
                     <input type="text" name="jabatan" required="required" class="p-2 border border-black">
                     <span>Umur</span>
-                    <input type="text" name="umur" required="required" class="p-2 border border-black">
+                    <input type="number" name="umur" required="required" class="p-2 border border-black">
                     <span>Alamat</span>
                     <textarea name="alamat" required="required" class="p-2 border border-black"></textarea>
                 </div>
