@@ -26,22 +26,30 @@
                     <span>Nama</span>
                     <input type="text" name="pname" class="p-2 border border-black" value="{{ old('pname') }}">
                     @error('pname')
+                    <div class="text-red-600">
                         {{ $message }}
+                    </div>
                     @enderror
                     <span>Jabatan</span>
                     <input type="text" name="pjabatan" class="p-2 border border-black" value="{{ old('pjabatan')}}">
                     @error('pjabatan')
+                    <div class="text-red-600">
                         {{ $message }}
+                    </div>
                     @enderror
                     <span>Umur</span>
-                    <input type="number" name="pumur" class="p-2 border border-black" value="{{ old('pumur')}}">
+                    <input type="text" name="pumur" class="p-2 border border-black" value="{{ old('pumur')}}">
                     @error('pumur')
+                    <div class="text-red-600">
                         {{ $message }}
+                    </div>
                     @enderror
                     <span>Alamat</span>
                     <textarea name="palamat" class="p-2 border border-black">{{ old('palamat')}}</textarea>
                     @error('palamat')
+                    <div class="text-red-600">
                         {{ $message }}
+                    </div>
                     @enderror
                 </div>
                 <button type="submit" value="Simpan Data" class="p-4 mt-8 border-2 border-black">Simpan Data</button>

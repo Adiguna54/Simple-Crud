@@ -9,9 +9,9 @@
     <title>Data Pegawai</title>
 </head>
 
-<body>
+<body class="mx-8">
 
-    <div class="py-4 mx-8">
+    <div class="py-4">
         <div class="pb-8">
             <p class="text-4xl font-bold text-center">Data Pegawai</p>
             <a href="/pegawai/tambah" class="p-2 border-2 border-black"> + Tambah Pegawai Baru</a>
@@ -43,18 +43,38 @@
                     </tr>
                 </table>
             @endforeach
+
+            <br>
+            <br>
         </div>
 
+        <div class="flex gap-2">
+            <div class="flex flex-col">
+                <span>Halaman</span>
+                <span>Jumlah Data</span>
+                <span>Data per Halaman</span>
+            </div>
+
+            <div class="flex flex-col">
+                <span>: {{ $pegawai->currentPage() }}</span>
+                <span>: {{ $pegawai->total() }}</span>
+                <span>: {{ $pegawai->perPage() }}</span>
+            </div>
+        </div>
+
+        <div>
+            {{ $pegawai->links() }}
+        </div>
         @session('success')
-            <div class="p-4 bg-green-100">
+            <div class="p-4 bg-green-200 border-2 border-black">
                 {{ $value }}
             </div>
         @endsession
 
         @session('failed')
-        <div class="p-4 bg-red-100">
-            {{ $value }}
-        </div>
+            <div class="p-4 bg-red-200 border-2 border-black">
+                {{ $value }}
+            </div>
         @endsession
     </div>
 </body>

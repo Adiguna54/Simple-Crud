@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PegawaiRequest;
+use App\Http\Requests\PegawaiUpdate;
 use App\Models\pegawai;
 use App\Models\Pegawai as ModelsPegawai;
 use Exception;
@@ -16,7 +17,7 @@ class PegawaiController extends Controller
     public function index()
     {
         // mengambil data pegawai untuk ditampilkan di view
-        $pegawai = Pegawai::get();
+        $pegawai = Pegawai::paginate(10);
         // menampilkan data table pegawai di view inde.blade.php
         return view('index', ['pegawai' => $pegawai]);
     }
@@ -70,8 +71,9 @@ class PegawaiController extends Controller
     }
 
     // metode pengeditan
-    public function update(PegawaiRequest $request)
+    public function update(PegawaiUpdate $request)
     {
+        // dd('update pegawai');
         // mengubah data pada table pegawai berdasarkan id nya untuk di update datanya
         try {
         
@@ -106,6 +108,6 @@ class PegawaiController extends Controller
     {
         // menghapus data pegawai pada table pegawai berdasarkan id yang dipilih
         $pegawai = Pegawai::where('id', $id)->delete();
-        return redirect('/pegawai');
+        return redirect('/pegawai')->with('success', 'Data Deleted!!');
     }
 }

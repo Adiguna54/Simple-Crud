@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    {{-- {{ $errors->any()?dd($errors->all()):'' }}; --}}
-    <x-common.success-failed-message />
+    {{ $errors->any()?dd($errors->all()):'' }};
     <div class="py-4 mx-8">
 
         <h3 class="text-4xl font-bold text-center">Edit Pegawai</h3>

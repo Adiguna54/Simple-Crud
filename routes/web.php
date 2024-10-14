@@ -18,12 +18,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// view route
 Route::get('/pegawai', [PegawaiController::class, 'index']);
+// search
+Route::get('/pegawai/cari', [PegawaiController::class, 'cari']);
+// tambah view
 Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah']);
+// edit view
 Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
+
 Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus']);
 
+// function route
 Route::post('/pegawai/store', [PegawaiController::class, 'store']);
 Route::post('/pegawai/update/', [PegawaiController::class, 'update']);
+
+// dd(Route::post('/pegawai/update/', [PegawaiController::class, 'update']));
 
 
