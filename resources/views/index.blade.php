@@ -12,9 +12,21 @@
 <body class="mx-8">
 
     <div class="py-4">
-        <div class="pb-8">
-            <p class="text-4xl font-bold text-center">Data Pegawai</p>
-            <a href="/pegawai/tambah" class="p-2 border-2 border-black"> + Tambah Pegawai Baru</a>
+        <p class="text-4xl font-bold text-center">Data Pegawai</p>
+        <div class="flex flex-row items-center justify-between pb-8">
+            <div>
+                <a href="{{ route('pegawai.tambah') }}" class="p-2 border-2 border-black"> + Tambah Pegawai Baru</a>
+            </div>
+
+            <form action="{{ route('pegawai.cari') }}" method="get">
+                <div class="flex flex-row gap-4">
+                    <input class="p-2 border-2 border-black" type="search" placeholder="Cari Pegawai ........"
+                        name="cari" id="" value="{{ old('cari') }}">
+                    <button class="w-20 p-2 border-2 border-black" type="submit" value="Cari">
+                        Cari
+                    </button>
+                </div>
+            </form>
         </div>
 
         <div>
@@ -37,8 +49,8 @@
                         <td>{{ $pegawais->pegawai_alamat }}</td>
 
                         <td class="text-blue-700">
-                            <a href="/pegawai/edit/{{ $pegawais->id }}" class="underline">Edit</a>
-                            <a href="/pegawai/hapus/{{ $pegawais->id }}" class="underline">Hapus</a>
+                            <a href="{{ route('pegawai.edit', $pegawais->id) }}" class="underline">Edit</a>
+                            <a href="{{ route('pegawai.hapus', $pegawais->id) }}" class="underline">Hapus</a>
                         </td>
                     </tr>
                 </table>
@@ -47,6 +59,22 @@
             <br>
             <br>
         </div>
+
+        <br>
+
+        @session('success')
+            <div class="p-4 bg-green-200 border-2 border-black">
+                {{ $value }}
+            </div>
+        @endsession
+
+        @session('failed')
+            <div class="p-4 bg-red-200 border-2 border-black">
+                {{ $value }}
+            </div>
+        @endsession
+
+        <br>
 
         <div class="flex gap-2">
             <div class="flex flex-col">
@@ -65,17 +93,7 @@
         <div>
             {{ $pegawai->links() }}
         </div>
-        @session('success')
-            <div class="p-4 bg-green-200 border-2 border-black">
-                {{ $value }}
-            </div>
-        @endsession
 
-        @session('failed')
-            <div class="p-4 bg-red-200 border-2 border-black">
-                {{ $value }}
-            </div>
-        @endsession
     </div>
 </body>
 

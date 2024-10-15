@@ -14,12 +14,12 @@
 
         <h3 class="text-4xl font-bold text-center">Data Pegawai</h3>
 
-        <a href="/pegawai" class="p-2 border-2 border-black"> Kembali</a>
+        <a href="{{ route('pegawai.home') }}" class="p-2 border-2 border-black"> Kembali</a>
 
         <br />
         <br />
 
-        <form action="/pegawai/store" method="post">
+        <form action="{{ route('pegawai.store') }}" method="post">
             {{ csrf_field() }}
             <table>
                 <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">

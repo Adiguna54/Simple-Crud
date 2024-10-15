@@ -49,6 +49,7 @@ class PegawaiController extends Controller
             // dd($e->getMessage());
             return redirect('/pegawai')->with('failed', 'Failed to Add New Data');
         }
+
         // DB::table('pegawais')->insert([
         //     'pegawai_nama' => $request->nama,
         //     'pegawai_jabatan' => $request->jabatan,
@@ -65,7 +66,7 @@ class PegawaiController extends Controller
         // mengambil data pegawai berdasarkan ID nya untuk ditampilkan di halaman edit
         $pegawai = Pegawai::where('id', $id)->get();
         // $pegawai = DB::table('pegawais')->where('id', $id)->get();
-        
+
         // menampilkan data pegawai yang didapat ke view edit.blade.php
         return view('edit', ['pegawai' => $pegawai]);
     }
@@ -76,7 +77,7 @@ class PegawaiController extends Controller
         // dd('update pegawai');
         // mengubah data pada table pegawai berdasarkan id nya untuk di update datanya
         try {
-        
+
             DB::beginTransaction();
             $pegawai = Pegawai::findOrFail($request->id);
             $pegawai->pegawai_nama = $request->pname;
@@ -88,7 +89,7 @@ class PegawaiController extends Controller
             return redirect('/pegawai')->with('success', 'Success to Edit the Data');
         } catch (Exception $e) {
             DB::rollBack();
-            return redirect('/pegawai')->with('failed', 'Failed to Edit the Data');
+            return redirect('/pegawai')->with('failed', 'Failed to Edit the Data' . '' . $e->getMessage());
         }
 
 
@@ -109,5 +110,17 @@ class PegawaiController extends Controller
         // menghapus data pegawai pada table pegawai berdasarkan id yang dipilih
         $pegawai = Pegawai::where('id', $id)->delete();
         return redirect('/pegawai')->with('success', 'Data Deleted!!');
+    }
+
+    public function cari(Request $request)
+    {
+        // menangkap data pencarian
+        $cari = $request->cari; // Baris ini menyimpan nilai input cari dari request ke dalam variabel $cari. Jadi jika pengguna mengetikkan "John" dalam form pencarian, maka variabel $cari akan menyimpan string "John".
+        
+        // mengabil data dari table pegawai sesuai pencarian anda
+        $pegawai = Pegawai::where('pegawai_nama', 'like', '%' . $cari . '%')->paginate();
+
+        // mengirim data pegawai ke view index
+        return view('index', ['pegawai' => $pegawai]);
     }
 }

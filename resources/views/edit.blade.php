@@ -19,12 +19,13 @@
         <br>
 
         @foreach ($pegawai as $pegawais)
-            <form action="/pegawai/update/" method="post">
+            <form action="{{ route('pegawai.update') }}" method="post">
                 {{-- csrf_field fungsinya adalah sebagai fitur keamanan untuk pencegahan penginputan data dari luar aplikasi atau sistem --}}
                 {{ csrf_field() }}
                 <table>
                     <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">
-                        <input type="hidden" name="id" value="{{ $pegawais->id }}">
+                        <span>ID</span>
+                        <input type="text" name="id" value="{{ $pegawais->id }}">
                         <span>Nama</span>
                         <input type="text" required="required" name="pname" value="{{ $pegawais->pegawai_nama }}"
                             class="p-2 border border-black">

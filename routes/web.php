@@ -19,19 +19,19 @@ Route::get('/', function () {
 });
 
 // view route
-Route::get('/pegawai', [PegawaiController::class, 'index']);
+Route::get('/pegawai', [PegawaiController::class, 'index'])->name('pegawai.home');
 // search
-Route::get('/pegawai/cari', [PegawaiController::class, 'cari']);
+Route::get('/pegawai/cari', [PegawaiController::class, 'cari'])->name('pegawai.cari');
 // tambah view
-Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah']);
+Route::get('/pegawai/tambah', [PegawaiController::class, 'tambah'])->name('pegawai.tambah');
 // edit view
-Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit']);
+Route::get('/pegawai/edit/{id}', [PegawaiController::class, 'edit'])->name('pegawai.edit');
 
-Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus']);
+Route::get('/pegawai/hapus/{id}', [PegawaiController::class, 'hapus'])->name('pegawai.hapus');
 
 // function route
-Route::post('/pegawai/store', [PegawaiController::class, 'store']);
-Route::post('/pegawai/update/', [PegawaiController::class, 'update']);
+Route::post('/pegawai/store', [PegawaiController::class, 'store'])->name('pegawai.store');
+Route::post('/pegawai/update/', [PegawaiController::class, 'update'])->name('pegawai.update');
 
 // dd(Route::post('/pegawai/update/', [PegawaiController::class, 'update']));
 
