@@ -17,7 +17,7 @@ class PegawaiController extends Controller
     public function index()
     {
         // mengambil data pegawai untuk ditampilkan di view
-        $pegawai = Pegawai::paginate(10);
+        $pegawai = Pegawai::with('profiles')->paginate(10);
         // menampilkan data table pegawai di view inde.blade.php
         return view('index', ['pegawai' => $pegawai]);
     }
@@ -64,7 +64,7 @@ class PegawaiController extends Controller
     public function edit($id)
     {
         // mengambil data pegawai berdasarkan ID nya untuk ditampilkan di halaman edit
-        $pegawai = Pegawai::where('id', $id)->get();
+        $pegawai = Pegawai::find($id);
         // $pegawai = DB::table('pegawais')->where('id', $id)->get();
 
         // menampilkan data pegawai yang didapat ke view edit.blade.php

@@ -17,4 +17,8 @@ class Pegawai extends Model
         'pegawai_umur',
         'pegawai_alamat',
     ];
+
+    public function profiles(){
+        return $this->hasOne(Profile::class);
+    }
 }

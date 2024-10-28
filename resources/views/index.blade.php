@@ -35,18 +35,20 @@
             @foreach ($pegawai as $pegawais)
                 <table class="w-full border-2 border-black">
                     <tr
-                        class="grid items-center justify-center grid-cols-5 bg-teal-600 border-b-2 divide-x-2 divide-black border-b-black">
+                        class="grid items-center justify-center grid-cols-6 bg-teal-600 border-b-2 divide-x-2 divide-black border-b-black">
                         <th>Nama</th>
                         <th>Jabatan</th>
                         <th>Umur</th>
                         <th>Alamat</th>
+                        <th>No. Telp</th>
                         <th>Opsi</th>
                     </tr>
-                    <tr class="grid grid-cols-5 text-center divide-x-2 divide-black">
+                    <tr class="grid grid-cols-6 text-center divide-x-2 divide-black">
                         <td>{{ $pegawais->pegawai_nama }}</td>
                         <td>{{ $pegawais->pegawai_jabatan }}</td>
                         <td>{{ $pegawais->pegawai_umur }}</td>
                         <td>{{ $pegawais->pegawai_alamat }}</td>
+                        <td>{{ $pegawais->profiles->no_telepon ?? 'No Phone Numbers' }}</td>
 
                         <td class="text-blue-700">
                             <a href="{{ route('pegawai.edit', $pegawais->id) }}" class="underline">Edit</a>

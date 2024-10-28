@@ -37,14 +37,14 @@ class PegawaiSeeder extends Seeder
         //     }
         // }
 
-        $faker = Faker::create('id_ID');
-        for ($i = 1; $i <= 30; $i++) {
-            DB::table('pegawais')->insert([
-                'pegawai_nama' => substr($faker->name, 0, 20),
-                'pegawai_jabatan' => substr($faker->jobTitle, 0, 10),
-                'pegawai_umur' => $faker->numberBetween(23, 55),
-                'pegawai_alamat' => $faker->address,
-            ]);
-        }
+        // $faker = Faker::create('id_ID');
+        // for ($i = 1; $i <= 30; $i++) {
+        //     DB::table('pegawais')->insert([
+        //         'pegawai_nama' => substr($faker->name, 0, 20),
+        //         'pegawai_jabatan' => substr($faker->jobTitle, 0, 10),
+        //         'pegawai_umur' => $faker->numberBetween(23, 55),
+        //         'pegawai_alamat' => $faker->address,
+        //     ]);
+        // }
     }
 }
