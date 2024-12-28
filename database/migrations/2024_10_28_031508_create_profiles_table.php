@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id('id');
             $table->string('no_telepon');
-            $table->foreignId('pegawai_id')->nullable()->references('id')->on('pegawais');  
+            $table->foreignId('pegawai_id')->nullable()->references('id')->on('pegawais')->onDelete('cascade');  
             $table->timestamps();
         });
     }

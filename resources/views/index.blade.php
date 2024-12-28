@@ -11,6 +11,12 @@
 
 <body class="mx-8">
 
+    <br>
+
+    <x-common.modal.success-failed-modal />
+
+    <br>
+
     <div class="py-4">
         <p class="text-4xl font-bold text-center">Data Pegawai</p>
         <div class="flex flex-row items-center justify-between pb-8">
@@ -48,11 +54,11 @@
                         <td>{{ $pegawais->pegawai_jabatan }}</td>
                         <td>{{ $pegawais->pegawai_umur }}</td>
                         <td>{{ $pegawais->pegawai_alamat }}</td>
-                        <td>{{ $pegawais->profiles->no_telepon ?? 'No Phone Numbers' }}</td>
+                        <td>{{ $pegawais->profile->no_telepon ?? 'No Phone Numbers' }}</td>
 
                         <td class="text-blue-700">
-                            <a href="{{ route('pegawai.edit', $pegawais->id) }}" class="underline">Edit</a>
-                            <a href="{{ route('pegawai.hapus', $pegawais->id) }}" class="underline">Hapus</a>
+                            <a href="{{ route('pegawai.edit', $pegawais->id) }}">Edit</a>
+                            <a href="{{ route('pegawai.hapus', $pegawais->id) }}">Hapus</a>
                         </td>
                     </tr>
                 </table>
@@ -61,20 +67,6 @@
             <br>
             <br>
         </div>
-
-        <br>
-
-        @session('success')
-            <div class="p-4 bg-green-200 border-2 border-black">
-                {{ $value }}
-            </div>
-        @endsession
-
-        @session('failed')
-            <div class="p-4 bg-red-200 border-2 border-black">
-                {{ $value }}
-            </div>
-        @endsession
 
         <br>
 
@@ -97,6 +89,8 @@
         </div>
 
     </div>
+
+    
 </body>
 
 </html>

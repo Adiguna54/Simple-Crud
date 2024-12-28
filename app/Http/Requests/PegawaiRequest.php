@@ -27,6 +27,7 @@ class PegawaiRequest extends FormRequest
             'pjabatan' => 'required|string|max:10',
             'pumur' => 'required|integer',
             'palamat' => 'required',
+            'no_telepon' => 'required|string|max:20',
         ];
     }
 }

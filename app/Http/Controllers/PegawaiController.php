@@ -17,9 +17,11 @@ class PegawaiController extends Controller
     public function index()
     {
         // mengambil data pegawai untuk ditampilkan di view
-        $pegawai = Pegawai::with('profiles')->paginate(10);
+        $pegawai = Pegawai::with('profile')->paginate(10);
         // menampilkan data table pegawai di view inde.blade.php
-        return view('index', ['pegawai' => $pegawai]);
+        return view('index', [
+            'pegawai' => $pegawai
+        ]);
     }
 
     public function tambah()
@@ -42,6 +44,10 @@ class PegawaiController extends Controller
             $pegawai->pegawai_umur = $request->pumur;
             $pegawai->pegawai_alamat = $request->palamat;
             $pegawai->save();
+
+            $pegawai->profile()->create([
+                'no_telepon' => $request->no_telepon,
+            ]);
             DB::commit();
             return redirect('/pegawai')->with('success', 'Success Add New Data');
         } catch (Exception $e) {
@@ -49,26 +55,17 @@ class PegawaiController extends Controller
             // dd($e->getMessage());
             return redirect('/pegawai')->with('failed', 'Failed to Add New Data');
         }
-
-        // DB::table('pegawais')->insert([
-        //     'pegawai_nama' => $request->nama,
-        //     'pegawai_jabatan' => $request->jabatan,
-        //     'pegawai_umur' => $request->umur,
-        //     'pegawai_alamat' => $request->alamat
-        // ]);
-
         // kembali ke halaman pegawai setelah melakukan penambahan data
-        // return redirect('/pegawai');
     }
 
     public function edit($id)
     {
         // mengambil data pegawai berdasarkan ID nya untuk ditampilkan di halaman edit
-        $pegawai = Pegawai::find($id);
-        // $pegawai = DB::table('pegawais')->where('id', $id)->get();
+        $pegawai = Pegawai::with('profile')->findOrFail($id);
+        // dd($pegawai);
 
         // menampilkan data pegawai yang didapat ke view edit.blade.php
-        return view('edit', ['pegawai' => $pegawai]);
+        return view('edit', ['pegawai' => $pegawai], compact('pegawai'));
     }
 
     // metode pengeditan
@@ -85,21 +82,15 @@ class PegawaiController extends Controller
             $pegawai->pegawai_umur = $request->pumur;
             $pegawai->pegawai_alamat = $request->palamat;
             $pegawai->save();
+            $pegawai->profile()->create([
+                'no_telepon' => $request->no_telepon,
+            ]);
             DB::commit();
             return redirect('/pegawai')->with('success', 'Success to Edit the Data');
         } catch (Exception $e) {
             DB::rollBack();
             return redirect('/pegawai')->with('failed', 'Failed to Edit the Data' . '' . $e->getMessage());
         }
-
-
-        // DB::table('pegawais')->where('id', $request->id)->update([
-        //     'pegawai_nama' => $request->nama,
-        //     'pegawai_jabatan' => $request->jabatan,
-        //     'pegawai_umur' => $request->umur,
-        //     'pegawai_alamat' => $request->alamat
-        // ]);
-
         // kembali ke halaman pegawai setelah melakukan perubahan data
         // return redirect('/pegawai');
     }
@@ -116,7 +107,7 @@ class PegawaiController extends Controller
     {
         // menangkap data pencarian
         $cari = $request->cari; // Baris ini menyimpan nilai input cari dari request ke dalam variabel $cari. Jadi jika pengguna mengetikkan "John" dalam form pencarian, maka variabel $cari akan menyimpan string "John".
-        
+
         // mengabil data dari table pegawai sesuai pencarian anda
         $pegawai = Pegawai::where('pegawai_nama', 'like', '%' . $cari . '%')->paginate();
 

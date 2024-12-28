@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Log;
 
 class Pegawai extends Model
 {
@@ -18,7 +19,16 @@ class Pegawai extends Model
         'pegawai_alamat',
     ];
 
-    public function profiles(){
-        return $this->hasOne(Profile::class);
+    public function profile(){
+        return $this->hasOne(Profile::class, 'pegawai_id');
     }
+
+    // protected static function boot()
+    // {
+    //     parent::boot();
+
+    //     static::deleting(function ($pegawai) {
+    //         $pegawai->profile()->delete(); // Hapus profil terkait
+    //     });
+    // }
 }

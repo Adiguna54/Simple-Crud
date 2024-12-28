@@ -22,35 +22,22 @@
         <form action="{{ route('pegawai.store') }}" method="post">
             {{ csrf_field() }}
             <table>
-                <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">
+                <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 border border-black">
                     <span>Nama</span>
                     <input type="text" name="pname" class="p-2 border border-black" value="{{ old('pname') }}">
-                    @error('pname')
-                    <div class="text-red-600">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <x-common.alert.message name="pname" />
                     <span>Jabatan</span>
-                    <input type="text" name="pjabatan" class="p-2 border border-black" value="{{ old('pjabatan')}}">
-                    @error('pjabatan')
-                    <div class="text-red-600">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <input type="text" name="pjabatan" class="p-2 border border-black" value="{{ old('pjabatan') }}">
+                    <x-common.alert.message name="pjabatan" />
                     <span>Umur</span>
-                    <input type="text" name="pumur" class="p-2 border border-black" value="{{ old('pumur')}}">
-                    @error('pumur')
-                    <div class="text-red-600">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <input type="text" name="pumur" class="p-2 border border-black" value="{{ old('pumur') }}">
+                    <x-common.alert.message name="pumur" />
                     <span>Alamat</span>
-                    <textarea name="palamat" class="p-2 border border-black">{{ old('palamat')}}</textarea>
-                    @error('palamat')
-                    <div class="text-red-600">
-                        {{ $message }}
-                    </div>
-                    @enderror
+                    <textarea name="palamat" class="p-2 border border-black">{{ old('palamat') }}</textarea>
+                    <x-common.alert.message name="palamat" />
+                    <span>No Telepon</span>
+                    <input type="tel" name="no_telepon" class="p-2 border border-black" value="{{ old('no_telepon') }}">
+                    <x-common.alert.message name="no_telepon" />
                 </div>
                 <button type="submit" value="Simpan Data" class="p-4 mt-8 border-2 border-black">Simpan Data</button>
             </table>

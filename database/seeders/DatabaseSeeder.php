@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // ambil semua data ID padd tabel pegawai
+        // ambil semua data ID pada tabel pegawai
         $pegawaisID = DB::table('pegawais')->pluck('id');
 
         $faker = Faker::create('id_ID');
