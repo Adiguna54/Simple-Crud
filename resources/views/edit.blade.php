@@ -25,18 +25,21 @@
                 <table>
                     <div class="grid items-center justify-center grid-cols-2 gap-2 p-4 bg-teal-600 border border-black">
                         <span>ID</span>
-                        <input type="text" name="id" value="{{ $pegawais->id }}">
+                        <input type="text" name="id" value="{{ $pegawai->id }}">
                         <span>Nama</span>
-                        <input type="text" required="required" name="pname" value="{{ $pegawais->pegawai_nama }}"
+                        <input type="text" required="required" name="pname" value="{{ $pegawai->pegawai_nama }}"
                             class="p-2 border border-black">
                         <span>Jabatan</span>
-                        <input type="text" required="required" name="pjabatan" value="{{ $pegawais->pegawai_jabatan }}"
+                        <input type="text" required="required" name="pjabatan" value="{{ $pegawai->pegawai_jabatan }}"
                             class="p-2 border border-black">
                         <span>Umur</span>
-                        <input type="number" required="required" name="pumur" value="{{ $pegawais->pegawai_umur }}"
+                        <input type="number" required="required" name="pumur" value="{{ $pegawai->pegawai_umur }}"
+                            class="p-2 border border-black">
+                        <span>No Telepon</span>
+                        <input type="tel" required="required" name="no_telepon" value="{{ $pegawai->profile->no_telepon }}"
                             class="p-2 border border-black">
                         <span>Alamat</span>
-                        <textarea required="required" name="palamat" class="p-2 border border-black">{{ $pegawais->pegawai_alamat }}</textarea>
+                        <textarea required="required" name="palamat" class="p-2 border border-black">{{ $pegawai->pegawai_alamat }}</textarea>
                     </div>
                     <button type="submit" value="Simpan Data" class="p-4 mt-8 border-2 border-black">Simpan
                         Data</button>

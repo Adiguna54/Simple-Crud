@@ -65,7 +65,7 @@ class PegawaiController extends Controller
         // dd($pegawai);
 
         // menampilkan data pegawai yang didapat ke view edit.blade.php
-        return view('edit', ['pegawai' => $pegawai], compact('pegawai'));
+        return view('edit', ['pegawai' => $pegawai]);
     }
 
     // metode pengeditan
